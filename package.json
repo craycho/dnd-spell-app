@@ -1,0 +1,15 @@
+{
+  "name": "dnd-app-ver1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "controller.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "author": "Bakir Kreco",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.2",
+    "parcel": "^2.8.2"
+  }
+}
