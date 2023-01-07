@@ -21,7 +21,7 @@ function controlSearch(e) {
   let results = [];
 
   // Originalno je > 0
-  if (inputVal.length > 1) {
+  if (inputVal.length > 2) {
     results = search(inputVal);
   }
   showSuggestions(results, inputVal); // Proslijedi spellove koji sadrze input value, kao i sam input value
