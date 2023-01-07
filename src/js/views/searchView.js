@@ -2,7 +2,7 @@ import { state } from "../model.js";
 
 class SearchView {
   _parentEl = document.querySelector(".search-spell");
-  suggestions = document.querySelector(".suggestions");
+  suggestions = document.querySelector(".suggestions ul");
 
   getQuery() {
     const query = this._parentEl.querySelector("#form-spell").value;
@@ -19,40 +19,9 @@ class SearchView {
     //   e.preventDefault();
     //   handler();
     // });
-    this._parentEl.addEventListener(
-      "keyup",
-      this.showSuggestions.bind(this, state.spellResults)
-    );
-  }
+    this._parentEl.addEventListener("keyup", handler);
 
-  // searchHandler(e) {
-  //   const inputVal = e.currentTarget.value;
-  //   let results = [];
-  //   if (inputVal.length > 0) {
-  //     results = search(inputVal);
-  //   }
-  //   showSuggestions(results);
-  // }
-
-  showSuggestions(results) {
-    console.log(results);
-
-    if (results.length > 0) {
-      for (let i = 0; i < results.length; i++) {
-        let spellName = results[i].name;
-
-        const match = spellName;
-        console.log(match);
-        // item = item.replace(match[0], `<strong>${match}</strong>`);
-
-        this.suggestions.innerHTML += `<li>${match}</li>`;
-      }
-      this.suggestions.classList.add("has-suggestions");
-    } else {
-      results = [];
-      this.suggestions.innerHTML = "";
-      this.suggestions.classList.remove("has-suggestions");
-    }
+    //this.showSuggestions.bind(this, state.spellResults)
   }
 }
 
