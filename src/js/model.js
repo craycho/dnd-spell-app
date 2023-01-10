@@ -1,6 +1,5 @@
 import { API_URL, TIMEOUT_SECONDS } from "./config.js";
 import { timeout } from "./helpers.js";
-import searchView from "./views/searchView.js";
 
 export const state = {
   spell: {},

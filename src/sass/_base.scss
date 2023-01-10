@@ -5,7 +5,7 @@ $color-grad-2: #f48982;
 
 $color-grey-light-1: #f9f5f3; // Light background
 $color-grey-light-2: #f2efee; // Light lines
-$color-grey-light-3: #d3c7c3; // Light text (placeholder)
+$color-grey-light-3: #c2c1c1; // Light text (placeholder)
 $color-grey-dark-1: #615551; // Normal text
 $color-grey-dark-2: #918581; // Lighter text
 
@@ -80,14 +80,17 @@ input:focus {
 }
 
 .btn-primary {
-  width: 10rem;
-  height: 7rem;
-  border-radius: 25%;
-
+  width: 14rem;
+  height: 6rem;
+  border-radius: 15%;
   margin-left: 1rem;
   padding: 5px;
-  border: 5px inset #ffa73b;
+  border: none;
+  // border: 5px inset #ffa73b;
+
   color: $color-grey-dark-2;
+  background-color: #efefef;
+  font-size: 2rem;
   cursor: pointer;
 }
 
@@ -100,11 +103,28 @@ input:focus {
 }
 
 #form-spell {
-  height: 7rem;
-  width: 42rem;
+  height: 9rem;
+  width: 48rem;
   border: 5px inset #ffa73b;
-
   padding-left: 1rem;
+
+  font-size: 2rem;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $color-grey-light-3;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $color-grey-light-3;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $color-grey-light-3;
 }
 
 // Ukine mali "x" prilikom searchanja pojma
@@ -113,9 +133,9 @@ input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
 
-.spell {
-  font-size: 20px;
-}
+// .spell {
+//   font-size: 20px;
+// }
 
 ul {
   display: none;

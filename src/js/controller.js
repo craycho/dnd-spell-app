@@ -1,6 +1,6 @@
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
-import spellView from "./views/spellView.js";
+import resultsView from "./views/resultsView.js";
 
 function search(str) {
   let results = [];
