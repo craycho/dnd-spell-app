@@ -30,3 +30,8 @@ class SearchView {
 }
 
 export default new SearchView();
+
+/**
+ * @todo: Ucini da se prikaze live search nakon ponovnog klikanja na search bar
+ *        Ucini da nestanu search results nakon sto se klikne van suggestions (search results)
+ */

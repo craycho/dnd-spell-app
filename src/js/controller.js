@@ -48,6 +48,7 @@ function showSuggestions(results, inputVal) {
 async function controlDisplaySpell(e) {
   try {
     // 1) Geta spell iz niza na osnovu pretraznog pojma
+    console.log(e.target);
     const spells = model.state.spellList;
     const [selectedSpell] = spells.filter(
       spell => spell.name === e.target.textContent
@@ -65,6 +66,7 @@ async function controlDisplaySpell(e) {
     console.log(spell);
     searchView.suggestions.innerHTML = "";
     let spellLevelMarkup = "";
+
     if (spell.level === 0) spellLevelMarkup = spell.school.name + " cantrip";
     else if (spell.level === 1)
       spellLevelMarkup = "1st-level " + spell.school.index;
