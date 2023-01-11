@@ -72,7 +72,7 @@ async function controlDisplaySpell(e) {
       spellLevelMarkup = "2nd-level " + spell.school.index;
     else if (spell.level === 3)
       spellLevelMarkup = "3rd-level " + spell.school.index;
-    else spellLevelMarkup = spell.level + "th-level";
+    else spellLevelMarkup = spell.level + "th-level " + spell.school.index;
 
     const spellMarkup = `<h3>${spell.name}</h3>
     <div class="type">${spellLevelMarkup}</div>
