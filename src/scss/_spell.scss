@@ -1,4 +1,20 @@
-.recipe {
+.spell-preview {
+  position: absolute;
+  padding-left: 15%;
+  padding-right: 15%;
+  top: 17%;
+  z-index: 1;
+
+  font-size: 1.4rem;
+}
+
+.spell-preview p {
+  margin-bottom: 1rem;
+}
+
+// Random SCSS stuff, probably delete later
+
+/* .recipe {
   background-color: $color-grey-light-1;
 
   ///////////
@@ -177,3 +193,4 @@
     font-weight: 700;
   }
 }
+ */

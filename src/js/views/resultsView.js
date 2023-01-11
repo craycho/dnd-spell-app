@@ -2,7 +2,7 @@
  * @todo: Popraviti bug koji odmakne haos spellove kada se samo jedno slovo searcha (npr "a")
  */
 
-class SpellView {
+class ResultsView {
   generateMarkup(spells) {
     document.querySelector(".spells").innerHTML = "";
 
@@ -17,4 +17,4 @@ class SpellView {
   }
 }
 
-export default new SpellView();
+export default new ResultsView();

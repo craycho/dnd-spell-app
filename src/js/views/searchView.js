@@ -23,6 +23,10 @@ class SearchView {
 
     //this.showSuggestions.bind(this, state.spellResults)
   }
+
+  addHandlerSpells(handler) {
+    this.suggestions.addEventListener("click", handler);
+  }
 }
 
 export default new SearchView();

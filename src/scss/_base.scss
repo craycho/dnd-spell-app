@@ -53,6 +53,7 @@ input:focus {
 }
 
 .container {
+  position: relative;
   max-width: 120rem;
   min-height: 117rem;
   margin: 4vw auto;
@@ -61,10 +62,14 @@ input:focus {
   overflow: hidden;
   box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
 
-  display: grid;
-  grid-template-rows: 12% 88%;
-  justify-content: center;
-  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // SA DISPLAY:GRID
+  // grid-template-rows: 12% min-content min-content;
+  // justify-content: center;
+  // align-items: flex-start;
 
   // grid-template-rows: 10rem minmax(100rem, auto);
   // grid-template-columns: 1fr 2fr;
@@ -80,18 +85,22 @@ input:focus {
 }
 
 .btn-primary {
-  width: 14rem;
-  height: 6rem;
-  border-radius: 15%;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 30%;
   margin-left: 1rem;
   padding: 5px;
   border: none;
   // border: 5px inset #ffa73b;
 
-  color: $color-grey-dark-2;
-  background-color: #efefef;
+  color: $color-grey-light-3;
+  background-color: $color-grey-light-1;
   font-size: 2rem;
   cursor: pointer;
+}
+
+.bi-arrow-right-short {
+  font-size: 300%;
 }
 
 .search-spell {
@@ -99,7 +108,7 @@ input:focus {
   justify-content: center;
   align-items: center;
 
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 #form-spell {
@@ -108,6 +117,7 @@ input:focus {
   border: 5px inset #ffa73b;
   padding-left: 1rem;
 
+  border-radius: 13px;
   font-size: 2rem;
 }
 
@@ -133,17 +143,13 @@ input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
 
-// .spell {
-//   font-size: 20px;
-// }
-
 ul {
   display: none;
   list-style-type: none;
   padding: 0;
   margin: 0;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  max-height: 200px;
+  max-height: 400px;
   overflow-y: auto;
 }
 ul.has-suggestions {
@@ -153,7 +159,18 @@ ul li {
   padding: 10px;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.2);
+  font-size: 2rem;
 }
 ul li:hover {
   background-color: #e65c00;
+}
+
+ul::-webkit-scrollbar {
+}
+
+.suggestions {
+  margin-top: 7px;
+  width: 40%;
+  margin-right: 7%;
+  z-index: 2;
 }
