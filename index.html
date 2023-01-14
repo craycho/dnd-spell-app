@@ -11,18 +11,30 @@
   </head>
   <body>
     <div class="container">
+      <h1 class="search-instruction">Start by typing the name of a spell:</h1>
       <form class="search-spell" autocomplete="off">
         <!-- <div class="search-outline"> -->
         <input type="text" id="form-spell" placeholder="e.g. 'Firebolt'" />
         <!-- <label class="form-label" for="form-spell">Search</label> -->
         <!-- </div> -->
-        <button type="submit" class="btn btn-primary">
-          <!-- <i class="fas fa-search">Search</i> -->
+        <!-- <button type="submit" class="btn btn-primary">
           <i class="bi bi-arrow-right-short"></i>
-        </button>
+        </button> -->
       </form>
       <div class="suggestions">
         <ul></ul>
+      </div>
+
+      <h1 class="search-instruction-2">Or choosing a school & level:</h1>
+      <div class="btn-container">
+        <button type="submit" class="btn btn-primary">Abjuration</button>
+        <button type="submit" class="btn btn-primary">Conjuration</button>
+        <button type="submit" class="btn btn-primary">Divination</button>
+        <button type="submit" class="btn btn-primary">Enchantment</button>
+        <button type="submit" class="btn btn-primary">Evocation</button>
+        <button type="submit" class="btn btn-primary">Illusion</button>
+        <button type="submit" class="btn btn-primary">Necromancy</button>
+        <button type="submit" class="btn btn-primary">Transmutation</button>
       </div>
 
       <div class="spell-preview"></div>

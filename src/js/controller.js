@@ -1,6 +1,6 @@
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
-import resultsView from "./views/resultsView.js";
+import spellView from "./views/spellView.js";
 import { API_URL, TIMEOUT_SECONDS } from "./config.js";
 import { timeout } from "./helpers.js";
 
@@ -55,38 +55,10 @@ async function controlDisplaySpell(e) {
     );
 
     // 2) API poziv na specifican spell na osnovu getanog spella
-    const res = await Promise.race([
-      fetch(`${API_URL}/${selectedSpell.index}`),
-      timeout(TIMEOUT_SECONDS),
-    ]);
-    const spell = await res.json();
-    model.state.currentSpell = spell;
+    const spell = await model.loadSelectedSpell(selectedSpell);
 
     // 3) Displaya getani spell
-    console.log(spell);
-    searchView.suggestions.innerHTML = "";
-    let spellLevelMarkup = "";
-
-    if (spell.level === 0) spellLevelMarkup = spell.school.name + " cantrip";
-    else if (spell.level === 1)
-      spellLevelMarkup = "1st-level " + spell.school.index;
-    else if (spell.level === 2)
-      spellLevelMarkup = "2nd-level " + spell.school.index;
-    else if (spell.level === 3)
-      spellLevelMarkup = "3rd-level " + spell.school.index;
-    else spellLevelMarkup = spell.level + "th-level " + spell.school.index;
-
-    const spellMarkup = `<h3>${spell.name}</h3>
-    <div class="type">${spellLevelMarkup}</div>
-    <b>Casting Time:</b> ${spell.casting_time}<br>
-    <b>Range:</b> ${spell.range}<br>
-    <b>Components:</b>${spell.components.map(c => (c = " " + c))}<br>
-    <b>Duration:</b> ${spell.duration}<br><br>
-    ${spell.desc.map(element => `<p>${element}</p>`).join("")}
-
-  `;
-
-    document.querySelector(".spell-preview").innerHTML = spellMarkup;
+    spellView.displaySpell(spell);
   } catch (err) {
     throw new Error(err);
     console.error(err);
