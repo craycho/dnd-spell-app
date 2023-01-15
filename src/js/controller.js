@@ -89,7 +89,7 @@ async function controlSchoolSpells(selectedSchools) {
 
     // 3) Displaya filterovane spellove (rezultat API poziva)
     schoolView.displaySelectedSpells(data);
-    schoolView.filteredResults.classList.add("is-filtered");
+    schoolView.filteredGrid.classList.add("is-filtered");
   } catch (err) {
     throw new Error(err);
     console.error(err);

@@ -4,6 +4,7 @@ class SchoolView {
   _parentEl = document.querySelector(".btn-container");
   _searchBtn = document.querySelector(".btn-search");
   filteredResults = document.querySelector(".filter-results ul");
+  filteredGrid = document.querySelector(".filtered-container");
 
   addHandlerSchool() {
     this._parentEl.addEventListener("click", function (e) {
@@ -30,14 +31,19 @@ class SchoolView {
   }
 
   displaySelectedSpells(filteredSpells) {
-    console.log(filteredSpells);
-    this.filteredResults.innerHTML = "";
+    // console.log(filteredSpells);
+    // this.filteredResults.innerHTML = "";
+    // for (const spell of filteredSpells) {
+    //   console.log(spell.name);
+    //   this.filteredResults.innerHTML += `<li>${spell.name}</li>`;
+    // }
+    // console.log(this.filteredResults);
 
+    this.filteredGrid.innerHTML = "";
     for (const spell of filteredSpells) {
       console.log(spell.name);
-      this.filteredResults.innerHTML += `<li>${spell.name}</li>`;
+      this.filteredGrid.innerHTML += `<div class = "grid-item">${spell.name}</div>`;
     }
-    console.log(this.filteredResults);
   }
 }
 
