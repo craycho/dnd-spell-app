@@ -4,6 +4,8 @@ import { timeout } from "./helpers.js";
 export const state = {
   currentSpell: {},
   spellList: [],
+  selectedSchools: [],
+  filteredSpells: [],
 };
 
 const loadSpells = async function () {
@@ -27,8 +29,6 @@ export const loadSelectedSpell = async function (selectedSpell) {
     const spell = await res.json();
     this.state.currentSpell = spell;
 
-    console.log(this.state.currentSpell);
-
     return spell;
   } catch (err) {
     throw new Error(err);
@@ -36,12 +36,15 @@ export const loadSelectedSpell = async function (selectedSpell) {
   }
 };
 
-const loadSchool = async function (schoolName) {
+export const loadSchool = async function (queryString) {
   try {
-    const res = await Promise.race([fetch(ALT_URL), timeout(TIMEOUT_SECONDS)]);
+    const res = await Promise.race([
+      fetch(API_URL + queryString),
+      timeout(TIMEOUT_SECONDS),
+    ]);
     const data = await res.json();
 
-    console.log(data.results);
+    return data.results;
   } catch (err) {
     throw new Error(err);
     console.error(err);
@@ -49,4 +52,3 @@ const loadSchool = async function (schoolName) {
 };
 
 window.addEventListener("load", loadSpells);
-loadSchool();

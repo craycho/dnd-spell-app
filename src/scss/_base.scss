@@ -1,7 +1,9 @@
 // $color-primary: #f59a83;
 $color-primary: #f38e82;
-$color-grad-1: #fbdb89;
-$color-grad-2: #f48982;
+// $color-grad-1: #fbdb89;
+// $color-grad-2: #f48982;
+$color-grad-1: #040404;
+$color-grad-2: #df0000;
 
 $color-grey-light-1: #f9f5f3; // Light background
 $color-grey-light-2: #f2efee; // Light lines
@@ -54,9 +56,11 @@ input:focus {
 
 .container {
   position: relative;
-  max-width: 120rem;
+  max-width: 140rem;
   min-height: 117rem;
-  margin: 4vw auto;
+  // margin: 4vw auto;
+  margin: 2vw auto;
+
   background-color: #fff;
   border-radius: 9px;
   overflow: hidden;
@@ -85,7 +89,8 @@ input:focus {
 }
 
 .search-instruction {
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 30px;
   font-size: 3em;
 }
 
@@ -97,19 +102,29 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  // margin-top: 3%;
-  margin-top: 30px;
 }
 
 #form-spell {
   height: 12vh;
   width: 45vw;
-  border: 5px inset #ffa73b;
   padding-left: 1rem;
+  position: relative;
+  border: 6px inset #df0000;
 
   border-radius: 13px;
   font-size: 2rem;
+
+  // Ne vidi se search query kada je gradient
+  // border-image: $gradient 10;
+  // border-width: 10px;
+  // border-style: solid;
+  // border-radius: 13px;
+  // border: 10px solid transparent;
+  // background: $gradient border-box;
+  // -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+
+  // -webkit-mask-composite: xor;
+  // mask-composite: exclude;
 }
 
 ::placeholder {
@@ -168,7 +183,7 @@ ul::-webkit-scrollbar {
 }
 
 .search-instruction-2 {
-  margin-top: 15px;
+  margin-top: 30px;
   font-size: 2.5em;
 }
 
@@ -176,7 +191,7 @@ ul::-webkit-scrollbar {
   display: grid;
   grid-template-columns: repeat(4, auto);
 
-  margin-top: 18px;
+  margin-top: 20px;
   gap: 3px;
   row-gap: 12px;
 }
@@ -197,4 +212,26 @@ ul::-webkit-scrollbar {
   // background-position: center;
   font-size: 2rem;
   cursor: pointer;
+}
+
+.btn-primary:hover,
+active {
+  background-color: #d6d6d6;
+}
+
+.btn-primary.selected {
+  background-color: #d6d6d6;
+}
+
+.btn-search {
+  margin-top: 25px;
+  min-width: 100%;
+  background-image: $gradient;
+  color: $color-grey-light-1;
+  box-shadow: 2px 3px;
+}
+
+ul.is-filtered {
+  display: block;
+  column-count: 5;
 }

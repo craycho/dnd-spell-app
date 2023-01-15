@@ -6,10 +6,9 @@ import searchView from "./searchView.js";
 class SpellView {
   displaySpell(spell) {
     // 3) Displaya getani spell
-    console.log(spell);
     searchView.suggestions.innerHTML = "";
     let spellLevelMarkup = "";
-    console.log(spell.school.index);
+
     if (spell.level === 0) spellLevelMarkup = spell.school.name + " cantrip";
     else if (spell.level === 1)
       spellLevelMarkup = "1st-level " + spell.school.index;
@@ -28,22 +27,9 @@ class SpellView {
  ${spell.desc.map(element => `<p>${element}</p>`).join("")}
 
 `;
-
+    document.querySelector(".spell-preview").style.display = "block";
     document.querySelector(".spell-preview").innerHTML = spellMarkup;
   }
 }
 
 export default new SpellView();
-
-/* generateMarkup(spells) {
-  document.querySelector(".spells").innerHTML = "";
-
-  const html = spells.forEach(spell => {
-    document
-      .querySelector(".spells")
-      .insertAdjacentHTML(
-        "beforeend",
-        `<div class="spell">${spell.name}</div>`
-      );
-  });
-} */

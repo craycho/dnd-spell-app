@@ -1,12 +1,13 @@
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
 import spellView from "./views/spellView.js";
+import schoolView from "./views/schoolView.js";
 import { API_URL, TIMEOUT_SECONDS } from "./config.js";
 import { timeout } from "./helpers.js";
 
 function search(str) {
   let results = [];
-  const val = str.toLowerCase(); // f, fi, fir, fire
+  const val = str.toLowerCase();
   const spells = model.state.spellList;
 
   for (i = 0; i < spells.length; i++) {
@@ -29,10 +30,18 @@ function controlSearch(e) {
   showSuggestions(results, inputVal); // Proslijedi spellove koji sadrze input value, kao i sam input value
 }
 
+// function showFilters(results) {
+//   schoolView.filteredResults.innerHTML = "";
+
+//   for (let i = 0; i < results.length; i++) {
+//     schoolView.filteredResults.innerHTML += `<li>${results[i]}</li>`;
+//   }
+// }
+
 function showSuggestions(results, inputVal) {
   searchView.suggestions.innerHTML = "";
 
-  for (i = 0; i < results.length; i++) {
+  for (let i = 0; i < results.length; i++) {
     let item = results[i];
 
     /* let match = [];
@@ -48,7 +57,7 @@ function showSuggestions(results, inputVal) {
 async function controlDisplaySpell(e) {
   try {
     // 1) Geta spell iz niza na osnovu pretraznog pojma
-    console.log(e.target);
+    // console.log(e.target);
     const spells = model.state.spellList;
     const [selectedSpell] = spells.filter(
       spell => spell.name === e.target.textContent
@@ -65,9 +74,40 @@ async function controlDisplaySpell(e) {
   }
 }
 
+async function controlSchoolSpells(selectedSchools) {
+  try {
+    console.log(selectedSchools);
+    model.state.selectedSchools = selectedSchools;
+
+    // 1) Generise query string na osnovu odabranih schools
+    let queryString = "?";
+    selectedSchools.forEach(school => (queryString += `school=${school}&`));
+
+    // 2) API poziv sa generisanim query stringom
+    const data = await model.loadSchool(queryString);
+    model.state.filteredSpells = data;
+
+    // 3) Displaya filterovane spellove (rezultat API poziva)
+    schoolView.displaySelectedSpells(data);
+    schoolView.filteredResults.classList.add("is-filtered");
+  } catch (err) {
+    throw new Error(err);
+    console.error(err);
+  }
+}
+
+// function controlSelectedSpells() {
+//   schoolView.displaySelectedSpells(model.state.selectedSchools);
+// }
+
 const init = function () {
   window.addEventListener("load", model.loadSpells);
   searchView.addHandlerSearch(controlSearch);
   searchView.addHandlerSpells(controlDisplaySpell);
+  schoolView.addHandlerSchool();
+  schoolView.addHandlerSearch(controlSchoolSpells);
+
+  // showFilters(model.state.filteredSpells);
+  // schoolView.displaySelectedSpells(controlSelectedSpells);
 };
 init();
