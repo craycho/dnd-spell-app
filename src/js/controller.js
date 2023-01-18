@@ -19,6 +19,8 @@ const init = function () {
 };
 init();
 
+window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
+
 function search(str) {
   let results = [];
   const val = str.toLowerCase();
