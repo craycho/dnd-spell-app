@@ -9,13 +9,13 @@ const init = function () {
   window.addEventListener("load", model.loadSpells);
   searchView.addHandlerSearch(controlSearch);
   searchView.addHandlerSpells(controlDisplaySpell);
+  searchView.showSearchResultsOnClick(controlShowSearchOnClick);
+  searchView.hideSearchResults(controlHideSearchResults);
+
   filterView.addHandlerSchool();
   filterView.addHandlerLevel();
   filterView.addHandlerSearch(controlFilteredSpells);
   filterView.addHandlerResults(controlDisplayFilteredSpells);
-
-  // showFilters(model.state.filteredSpells);
-  // schoolView.displaySelectedSpells(controlSelectedSpells);
 };
 init();
 
@@ -46,6 +46,7 @@ function controlSearch(e) {
 
 function showSuggestions(results, inputVal) {
   searchView.suggestions.innerHTML = "";
+  model.state.searchedSpells = results;
 
   for (let i = 0; i < results.length; i++) {
     let item = results[i];
@@ -63,7 +64,6 @@ function showSuggestions(results, inputVal) {
 async function controlDisplaySpell(e) {
   try {
     // 1) Geta spell iz niza na osnovu pretraznog pojma
-    // console.log(e.target);
     const spells = model.state.spellList;
     const [selectedSpell] = spells.filter(
       spell => spell.name === e.target.textContent
@@ -78,6 +78,22 @@ async function controlDisplaySpell(e) {
     throw new Error(err);
     console.error(err);
   }
+}
+
+function controlShowSearchOnClick() {
+  const results = model.state.searchedSpells;
+  console.log(results);
+  const searchQuery = document.querySelector("#form-spell").value;
+
+  showSuggestions(results, searchQuery);
+}
+
+function controlHideSearchResults(e) {
+  if (
+    e.target.classList.contains("container") ||
+    e.target.classList.contains("btn-primary")
+  )
+    searchView.suggestions.innerHTML = "";
 }
 
 async function controlFilteredSpells(selectedSchools, selectedLevels) {

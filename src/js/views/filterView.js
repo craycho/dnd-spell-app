@@ -1,13 +1,4 @@
-import { state } from "../model.js";
-
-/**
- * @todo: Dodati opciju otvaranja spella putem clicka na listu
- */
-
-/**
- * @todo: Ucini da se prikaze live search nakon ponovnog klikanja na search bar
- *        Ucini da nestanu search results nakon sto se klikne van suggestions (search results)
- */
+import searchView from "./searchView.js";
 
 class FilterView {
   _schoolEl = document.querySelector(".btn-container-school");
@@ -53,6 +44,8 @@ class FilterView {
       handlerFilter(selectedSchools, selectedLevels);
       selectedSchools = [];
       selectedLevels = [];
+
+      searchView.suggestions.innerHTML = "";
     });
   }
 

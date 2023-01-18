@@ -57,7 +57,7 @@ input:focus {
 .container {
   position: relative;
   max-width: 140rem;
-  min-height: 117rem;
+  min-height: 75rem;
   // margin: 4vw auto;
   margin: 2vw auto;
 
@@ -170,7 +170,7 @@ ul li {
   border-bottom: 1px ridge #e4e4e4;
 }
 ul li:hover {
-  background-color: #e65c00;
+  background-color: #df0000c1;
 }
 
 ul::-webkit-scrollbar {
@@ -234,7 +234,7 @@ active {
 .btn-container-level {
   display: flex;
   gap: 8px;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .btn-level {

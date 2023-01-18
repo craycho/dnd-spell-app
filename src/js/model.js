@@ -2,8 +2,9 @@ import { API_URL, TIMEOUT_SECONDS, ALT_URL } from "./config.js";
 import { timeout } from "./helpers.js";
 
 export const state = {
-  currentSpell: {},
   spellList: [],
+  currentSpell: {},
+  searchedSpells: [],
   selectedSchools: [],
   selectedLevels: [],
   filteredSpells: [],
