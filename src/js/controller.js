@@ -12,6 +12,7 @@ const init = function () {
   filterView.addHandlerSchool();
   filterView.addHandlerLevel();
   filterView.addHandlerSearch(controlFilteredSpells);
+  filterView.addHandlerResults(controlDisplayFilteredSpells);
 
   // showFilters(model.state.filteredSpells);
   // schoolView.displaySelectedSpells(controlSelectedSpells);
@@ -81,13 +82,12 @@ async function controlDisplaySpell(e) {
 
 async function controlFilteredSpells(selectedSchools, selectedLevels) {
   try {
-    console.log(selectedSchools);
-    console.log(selectedLevels);
+    // console.log(selectedSchools);
+    // console.log(selectedLevels);
     model.state.selectedSchools = selectedSchools;
     model.state.selectedLevels = selectedLevels;
 
     // Exit clause ako nema filtera
-    console.log(selectedLevels);
     if (selectedSchools.length < 1 && selectedLevels.length < 1) return;
 
     // 1) Dopunjava query string na osnovu odabranih schools i levels
@@ -101,11 +101,26 @@ async function controlFilteredSpells(selectedSchools, selectedLevels) {
 
     // 3) Displaya filterovane spellove (rezultat API poziva)
     filterView.displaySelectedSpells(data);
-    filterView.filteredGrid.classList.add("is-filtered");
+    filterView.filteredResults.classList.add("is-filtered");
   } catch (err) {
     throw new Error(err);
     console.error(err);
   }
+}
+
+async function controlDisplayFilteredSpells(spellName) {
+  // console.log(spellName);
+
+  // 1) Geta spell iz niza na osnovu imena odabranog spella (Text contenta elementa)
+  const spells = model.state.spellList;
+  const [selectedSpell] = spells.filter(spell => spell.name === spellName);
+
+  console.log(selectedSpell);
+  // 2) API poziv na osnovu indexa izabranog spella
+  const spell = await model.loadSelectedSpell(selectedSpell);
+
+  // 3) Displaya getani spell
+  spellView.displaySpell(spell);
 }
 
 /* CONTROL SEARCH SA LISTOM 

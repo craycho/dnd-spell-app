@@ -13,8 +13,7 @@ class FilterView {
   _schoolEl = document.querySelector(".btn-container-school");
   _levelEl = document.querySelector(".btn-container-level");
   _searchBtn = document.querySelector(".btn-search");
-  filteredResults = document.querySelector(".filter-results ul");
-  filteredGrid = document.querySelector(".filtered-container");
+  filteredResults = document.querySelector(".filtered-container");
 
   addHandlerSchool() {
     this._schoolEl.addEventListener("click", function (e) {
@@ -58,11 +57,32 @@ class FilterView {
   }
 
   displaySelectedSpells(filteredSpells) {
-    this.filteredGrid.innerHTML = "";
+    // 2) Scrolla window do filterovanih spellova, u ovisnosti od pozicije viewporta
+
+    console.log(document.querySelector(".btn-search").getBoundingClientRect());
+
+    window.scrollTo({
+      top:
+        document.querySelector(".search-instruction-2").getBoundingClientRect()
+          .top +
+        window.scrollY -
+        20,
+      left: 0,
+      behavior: "smooth",
+    });
+
+    // 1) Displaya filterovane spellove
+    this.filteredResults.innerHTML = "";
     for (const spell of filteredSpells) {
-      // console.log(spell.name);
-      this.filteredGrid.innerHTML += `<div class = "grid-item">${spell.name}</div>`;
+      // console.log(spell);
+      this.filteredResults.innerHTML += `<div class = "grid-item">${spell.name}</div>`;
     }
+  }
+
+  addHandlerResults(handler) {
+    this.filteredResults.addEventListener("click", function (e) {
+      handler(e.target.textContent);
+    });
   }
 }
 

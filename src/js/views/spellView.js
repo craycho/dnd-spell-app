@@ -1,10 +1,8 @@
-/**
- * @todo: Dodati higher level features na spellove iz postojeceg niza
- */
 import searchView from "./searchView.js";
 
 class SpellView {
   displaySpell(spell) {
+    console.log(spell);
     // 1) Displaya getani spell
     searchView.suggestions.innerHTML = "";
     let spellLevelMarkup = "";
@@ -29,12 +27,12 @@ class SpellView {
  <b>Duration:</b> ${spell.duration}<span class="break-small"></span>
  ${spell.desc.map(element => `<p>${element}</p>`).join("")}
  ${higherLevel}
-`;
+`.replaceAll("***", "");
 
-    // 2) Scrolla window do displayanog spella
+    // 2) Scrolla window do vrha pagea
     window.scrollTo({
-      top: document.querySelector(".suggestions").getBoundingClientRect().top,
-      left: document.querySelector(".suggestions").getBoundingClientRect().left,
+      top: 0,
+      left: 0,
       behavior: "smooth",
     });
 
