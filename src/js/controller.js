@@ -86,6 +86,10 @@ async function controlFilteredSpells(selectedSchools, selectedLevels) {
     model.state.selectedSchools = selectedSchools;
     model.state.selectedLevels = selectedLevels;
 
+    // Exit clause ako nema filtera
+    console.log(selectedLevels);
+    if (selectedSchools.length < 1 && selectedLevels.length < 1) return;
+
     // 1) Dopunjava query string na osnovu odabranih schools i levels
     let queryString = "?";
     selectedSchools.forEach(school => (queryString += `school=${school}&`));
