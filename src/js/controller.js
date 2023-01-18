@@ -1,9 +1,22 @@
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
 import spellView from "./views/spellView.js";
-import schoolView from "./views/schoolView.js";
+import filterView from "./views/filterView.js";
 //import { API_URL, TIMEOUT_SECONDS } from "./config.js";
 //mport { timeout } from "./helpers.js";
+
+const init = function () {
+  window.addEventListener("load", model.loadSpells);
+  searchView.addHandlerSearch(controlSearch);
+  searchView.addHandlerSpells(controlDisplaySpell);
+  filterView.addHandlerSchool();
+  filterView.addHandlerLevel();
+  filterView.addHandlerSearch(controlFilteredSpells);
+
+  // showFilters(model.state.filteredSpells);
+  // schoolView.displaySelectedSpells(controlSelectedSpells);
+};
+init();
 
 function search(str) {
   let results = [];
@@ -29,14 +42,6 @@ function controlSearch(e) {
   }
   showSuggestions(results, inputVal); // Proslijedi spellove koji sadrze input value, kao i sam input value
 }
-
-// function showFilters(results) {
-//   schoolView.filteredResults.innerHTML = "";
-
-//   for (let i = 0; i < results.length; i++) {
-//     schoolView.filteredResults.innerHTML += `<li>${results[i]}</li>`;
-//   }
-// }
 
 function showSuggestions(results, inputVal) {
   searchView.suggestions.innerHTML = "";
@@ -74,40 +79,36 @@ async function controlDisplaySpell(e) {
   }
 }
 
-async function controlSchoolSpells(selectedSchools) {
+async function controlFilteredSpells(selectedSchools, selectedLevels) {
   try {
     console.log(selectedSchools);
+    console.log(selectedLevels);
     model.state.selectedSchools = selectedSchools;
+    model.state.selectedLevels = selectedLevels;
 
-    // 1) Generise query string na osnovu odabranih schools
+    // 1) Dopunjava query string na osnovu odabranih schools i levels
     let queryString = "?";
     selectedSchools.forEach(school => (queryString += `school=${school}&`));
+    selectedLevels.forEach(level => (queryString += `level=${level}&`));
 
     // 2) API poziv sa generisanim query stringom
-    const data = await model.loadSchool(queryString);
+    const data = await model.loadSchoolAndLevel(queryString);
     model.state.filteredSpells = data;
 
     // 3) Displaya filterovane spellove (rezultat API poziva)
-    schoolView.displaySelectedSpells(data);
-    schoolView.filteredGrid.classList.add("is-filtered");
+    filterView.displaySelectedSpells(data);
+    filterView.filteredGrid.classList.add("is-filtered");
   } catch (err) {
     throw new Error(err);
     console.error(err);
   }
 }
 
-// function controlSelectedSpells() {
-//   schoolView.displaySelectedSpells(model.state.selectedSchools);
-// }
+/* CONTROL SEARCH SA LISTOM 
+// function showFilters(results) {
+//   schoolView.filteredResults.innerHTML = "";
 
-const init = function () {
-  window.addEventListener("load", model.loadSpells);
-  searchView.addHandlerSearch(controlSearch);
-  searchView.addHandlerSpells(controlDisplaySpell);
-  schoolView.addHandlerSchool();
-  schoolView.addHandlerSearch(controlSchoolSpells);
-
-  // showFilters(model.state.filteredSpells);
-  // schoolView.displaySelectedSpells(controlSelectedSpells);
-};
-init();
+//   for (let i = 0; i < results.length; i++) {
+//     schoolView.filteredResults.innerHTML += `<li>${results[i]}</li>`;
+//   }
+// } */

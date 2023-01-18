@@ -5,6 +5,7 @@ export const state = {
   currentSpell: {},
   spellList: [],
   selectedSchools: [],
+  selectedLevels: [],
   filteredSpells: [],
 };
 
@@ -36,8 +37,10 @@ export const loadSelectedSpell = async function (selectedSpell) {
   }
 };
 
-export const loadSchool = async function (queryString) {
+export const loadSchoolAndLevel = async function (queryString) {
   try {
+    console.log(queryString);
+
     const res = await Promise.race([
       fetch(API_URL + queryString),
       timeout(TIMEOUT_SECONDS),

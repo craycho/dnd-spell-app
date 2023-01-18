@@ -193,17 +193,7 @@ ul::-webkit-scrollbar {
   font-size: 2.5em;
 }
 
-.btn-container-school {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-
-  margin-top: 20px;
-  gap: 10px;
-  row-gap: 12px;
-}
-
 .btn-primary {
-  min-width: 120px;
   width: 10vw;
   height: 70px;
   border-radius: 10px;
@@ -228,9 +218,34 @@ active {
   background-color: #d6d6d6;
 }
 
+.btn-container-school {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+
+  margin-top: 20px;
+  gap: 10px;
+  row-gap: 12px;
+}
+
+.btn-school {
+  min-width: 120px;
+}
+
+.btn-container-level {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.btn-level {
+  height: 60px;
+  width: 60px;
+  min-width: 50px;
+}
+
 .btn-search {
-  margin-top: 25px;
-  min-width: 100%;
+  margin-top: 30px;
+  min-width: 80%;
   background-image: $gradient;
   color: $color-grey-light-1;
   box-shadow: 2px 3px;
