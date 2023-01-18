@@ -1,5 +1,5 @@
 /**
- * @todo: Popraviti bug koji odmakne haos spellove kada se samo jedno slovo searcha (npr "a")
+ * @todo: Dodati higher level features na spellove iz postojeceg niza
  */
 import searchView from "./searchView.js";
 

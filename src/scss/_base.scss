@@ -193,7 +193,7 @@ ul::-webkit-scrollbar {
   font-size: 2.5em;
 }
 
-.btn-container {
+.btn-container-school {
   display: grid;
   grid-template-columns: repeat(4, auto);
 
@@ -258,6 +258,7 @@ active {
   padding: 20px 15px;
   // padding-bottom: 8px; // Jer je margin-bottom 12px, pa ga offseta
   border: 2px solid $color-grey-dark-2;
+  border-radius: 5px;
 }
 
 .grid-item {
@@ -271,7 +272,8 @@ active {
   margin-bottom: 12px;
   padding: 5px;
   min-height: 30px;
-  width: 200px;
+  // width: 200px;
+  width: 10em;
 
   background-color: $color-grey-light-2;
   border: 2px solid #dcdcdc49;

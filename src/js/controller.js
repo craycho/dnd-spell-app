@@ -2,8 +2,8 @@ import * as model from "./model.js";
 import searchView from "./views/searchView.js";
 import spellView from "./views/spellView.js";
 import schoolView from "./views/schoolView.js";
-import { API_URL, TIMEOUT_SECONDS } from "./config.js";
-import { timeout } from "./helpers.js";
+//import { API_URL, TIMEOUT_SECONDS } from "./config.js";
+//mport { timeout } from "./helpers.js";
 
 function search(str) {
   let results = [];

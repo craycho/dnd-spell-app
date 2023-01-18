@@ -1,7 +1,11 @@
 import { state } from "../model.js";
 
+/**
+ * @todo: Dodati opciju otvaranja spella putem clicka na listu
+ */
+
 class SchoolView {
-  _parentEl = document.querySelector(".btn-container");
+  _parentEl = document.querySelector(".btn-container-school");
   _searchBtn = document.querySelector(".btn-search");
   filteredResults = document.querySelector(".filter-results ul");
   filteredGrid = document.querySelector(".filtered-container");
