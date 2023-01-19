@@ -8,13 +8,16 @@
   // padding-right: 15%;
   z-index: 1;
 
-  margin-top: 1.5%;
+  margin-top: 3.5%; // 1.5%
   margin-left: 18%;
   margin-right: 18%;
   padding: 1vw 1.5vw;
   min-width: 60%;
 
+  background-color: #f8efd0;
+  color: #762f0e;
   border: 3px solid $color-grey-light-2;
+  border-radius: 10px;
   font-size: 1.5rem;
 }
 

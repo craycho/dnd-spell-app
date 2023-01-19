@@ -11,7 +11,11 @@ $color-grey-light-3: #c2c1c1; // Light text (placeholder)
 $color-grey-dark-1: #615551; // Normal text
 $color-grey-dark-2: #918581; // Lighter text
 
+$color-main: #267292;
+$color-accent: #91c5db;
+
 $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
+$gradient-2: linear-gradient(to right bottom, $color-grad-1, $color-main);
 
 $bp-large: 78.15em; // 1250px
 $bp-medium: 61.25em; // 980px
@@ -42,7 +46,8 @@ body {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  color: $color-grey-dark-1;
+  color: $color-grey-light-2;
+
   background-image: url("../img/background-img.jpg");
   background-attachment: fixed;
   background-size: cover;
@@ -57,11 +62,12 @@ input:focus {
 
 .container {
   position: relative;
-  max-width: 140rem;
-  min-height: 75rem; // 75
+  max-width: 80rem; // 140
+  min-height: 60rem; // 75
   margin: 2vw auto;
 
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.488);
+
   border-radius: 9px;
   overflow: hidden;
   box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
@@ -89,9 +95,10 @@ input:focus {
 }
 
 .search-instruction {
-  margin-top: 40px;
+  margin-top: 25px;
   margin-bottom: 30px;
-  font-size: 3em;
+  font-size: 3.5em;
+  text-shadow: 3px 3px 1 rgb(30, 30, 30);
 }
 
 .bi-arrow-right-short {
@@ -106,12 +113,14 @@ input:focus {
 
 #form-spell {
   height: 12vh;
-  width: 45vw;
-  padding-left: 1rem;
-  position: relative;
-  border: 6px inset #df0000;
+  width: 40vw;
+  min-width: 30em;
 
-  border-radius: 13px;
+  padding-left: 1.5rem;
+  position: relative;
+  border: 6px inset $color-main;
+
+  border-radius: 40px; //13
   font-size: 2rem;
 
   // Ne vidi se search query kada je gradient
@@ -170,7 +179,7 @@ ul li {
   border-bottom: 1px ridge #e4e4e4;
 }
 ul li:hover {
-  background-color: #df0000c1;
+  background-color: $color-accent;
 }
 
 ul::-webkit-scrollbar {
@@ -178,8 +187,10 @@ ul::-webkit-scrollbar {
 
 .suggestions {
   margin-top: 0.5vh;
-  width: 44vw;
+  width: 37vw;
   z-index: 2;
+
+  color: #267292;
 }
 
 .filter-section {
@@ -191,31 +202,35 @@ ul::-webkit-scrollbar {
 .search-instruction-2 {
   margin-top: 30px;
   font-size: 2.5em;
+  text-shadow: 3px 3px 1 rgb(30, 30, 30);
 }
 
 .btn-primary {
   width: 10vw;
   height: 70px;
-  border-radius: 10px;
+  border-radius: 12px; // 10
   padding: 5px;
   border: none;
 
-  color: $color-grey-dark-2;
+  // color: $color-grey-dark-2;
+  font-weight: 550;
+  color: $color-main;
+  text-shadow: 1px 1px 2 #3a779151;
+
   background-color: $color-grey-light-2;
-  // background-image: url("https://preview.redd.it/kf0xb3u9rgnz.jpg?auto=webp&s=718a0fe192c0e0ef85221fdbd7020699192f5e39");
-  // background-size: cover;
-  // background-position: center;
+  box-shadow: 3px 3px rgba(6, 71, 103, 0.382);
+
   font-size: 2rem;
   cursor: pointer;
 }
 
 .btn-primary:hover,
 active {
-  background-color: #d6d6d6;
+  background-color: $color-accent;
 }
 
 .btn-primary.selected {
-  background-color: #d6d6d6;
+  background-color: $color-accent;
 }
 
 .btn-container-school {
@@ -245,11 +260,13 @@ active {
 
 .btn-search {
   margin-top: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   min-width: 80%;
-  background-image: $gradient;
+  background-image: $gradient-2;
   color: $color-grey-light-1;
-  box-shadow: 2px 3px;
+  text-shadow: 2px 2px 2 rgb(30, 30, 30);
+
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.084);
 }
 
 .filtered-container {
@@ -270,7 +287,7 @@ active {
   columns: 4;
 
   width: 90%;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 40px;
   padding: 20px 15px;
   // padding-bottom: 8px; // Jer je margin-bottom 12px, pa ga offseta
@@ -289,8 +306,9 @@ active {
   margin-bottom: 12px;
   padding: 5px;
   min-height: 30px;
-  width: 10em;
+  width: 8em;
 
+  color: $color-main;
   background-color: $color-grey-light-2;
   border: 2px solid #dcdcdc49;
   border-radius: 8px;
@@ -301,6 +319,6 @@ active {
 
 .grid-item:hover,
 active {
-  background-color: #d6d6d6;
+  background-color: $color-accent;
   cursor: pointer;
 }

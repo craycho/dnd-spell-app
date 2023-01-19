@@ -1,3 +1,6 @@
+/**@todo Hide suggestions when clicking outside of container */
+/**@todo Fix scrollTo bug */
+
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
 import spellView from "./views/spellView.js";
@@ -84,13 +87,19 @@ async function controlDisplaySpell(e) {
 
 function controlShowSearchOnClick() {
   const results = model.state.searchedSpells;
-  console.log(results);
   const searchQuery = document.querySelector("#form-spell").value;
 
   showSuggestions(results, searchQuery);
 }
 
 function controlHideSearchResults(e) {
+  // console.log(e.target);
+  // console.log(e.target.classList.contains("btn-primary"));
+  // document.querySelector("#form-spell").addEventListener("blur", function () {
+  //   console.log("Desilo se");
+  //   searchView.suggestions.innerHTML = "";
+  // });
+  // Ghetto rjesenje
   if (
     e.target.classList.contains("container") ||
     e.target.classList.contains("btn-primary")
