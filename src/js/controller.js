@@ -1,12 +1,13 @@
-/**@todo Hide suggestions when clicking outside of container */
 /**@todo Fix scrollTo bug */
+/**@todo Fix background moving bug */
+/**@todo Fix suggestion container scaling */
 
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
 import spellView from "./views/spellView.js";
 import filterView from "./views/filterView.js";
 //import { API_URL, TIMEOUT_SECONDS } from "./config.js";
-//mport { timeout } from "./helpers.js";
+//import { timeout } from "./helpers.js";
 
 const init = function () {
   window.addEventListener("load", model.loadSpells);
@@ -93,17 +94,16 @@ function controlShowSearchOnClick() {
 }
 
 function controlHideSearchResults(e) {
-  // console.log(e.target);
-  // console.log(e.target.classList.contains("btn-primary"));
-  // document.querySelector("#form-spell").addEventListener("blur", function () {
-  //   console.log("Desilo se");
-  //   searchView.suggestions.innerHTML = "";
-  // });
-  // Ghetto rjesenje
-  if (
-    e.target.classList.contains("container") ||
-    e.target.classList.contains("btn-primary")
-  )
+  // 1) Slusa click na bodyu, van containera
+  const container = document.querySelector(".container");
+  document.addEventListener("click", function (event) {
+    if (!container.contains(event.target)) {
+      searchView.suggestions.innerHTML = "";
+    }
+  });
+
+  // 2) Provjerava da li je click van searcha
+  if (container.contains(e.target) && !e.target.closest(".search-spell"))
     searchView.suggestions.innerHTML = "";
 }
 

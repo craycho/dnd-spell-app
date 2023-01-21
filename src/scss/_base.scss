@@ -60,21 +60,41 @@ input:focus {
   outline: none;
 }
 
+// .wrapper {
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
 .container {
-  position: relative;
-  max-width: 80rem; // 140
-  min-height: 60rem; // 75
-  margin: 2vw auto;
-
-  background-color: rgba(0, 0, 0, 0.488);
-
-  border-radius: 9px;
-  overflow: hidden;
-  box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  width: 95%;
+  max-width: 75rem;
+  min-height: 60rem;
+  margin: 40px auto;
+  padding: 0px 2vw;
+
+  background-color: rgba(0, 0, 0, 0.488);
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0px 2vw;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    margin-top: 15vh;
+  }
 
   // SA DISPLAY:GRID
   // grid-template-rows: 12% min-content min-content;
@@ -87,18 +107,22 @@ input:focus {
   //   "head head"
   //   "list recipe";
 
-  @media only screen and (max-width: $bp-large) {
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-  }
+  // // OVO PRAVI CONTAINER BUG
+  // @media only screen and (max-width: $bp-large) {
+  //   max-width: 100%;
+  //   margin: 0;
+  //   border-radius: 0;
+  // }
 }
 
 .search-instruction {
   margin-top: 25px;
   margin-bottom: 30px;
-  font-size: 3.5em;
+  // font-size: 3.5em;
+  font-size: calc(18px + 0.6vw);
+
   text-shadow: 3px 3px 1 rgb(30, 30, 30);
+  white-space: nowrap;
 }
 
 .bi-arrow-right-short {
@@ -109,19 +133,25 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  min-width: 80%;
 }
 
 #form-spell {
   height: 12vh;
-  width: 40vw;
-  min-width: 30em;
+  width: 100%;
+  // min-width: 30em;
 
   padding-left: 1.5rem;
   position: relative;
   border: 6px inset $color-main;
 
-  border-radius: 40px; //13
+  border-radius: 40px;
   font-size: 2rem;
+
+  @media only screen and (max-width: $bp-small) {
+    max-height: 10vh;
+  }
 
   // Ne vidi se search query kada je gradient
   // border-image: $gradient 10;
@@ -158,6 +188,14 @@ input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
 
+.suggestions {
+  margin-top: 0.5vh;
+  width: 70%;
+  z-index: 2;
+
+  color: #267292;
+}
+
 ul {
   display: none;
   list-style-type: none;
@@ -166,61 +204,58 @@ ul {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
   max-height: 400px;
   overflow-y: auto;
-  background-color: $color-grey-light-2;
+  // background-color: $color-grey-light-2;
+  background-color: #f2efeec6;
 }
 ul.has-suggestions {
   display: block;
+  border-radius: 5px;
 }
 ul li {
   padding: 10px;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.2);
   font-size: 2rem;
-  border-bottom: 1px ridge #e4e4e4;
+  border-bottom: 1px ridge #b7b7b76f; // #e4e4e49c
 }
 ul li:hover {
   background-color: $color-accent;
 }
 
-ul::-webkit-scrollbar {
-}
-
-.suggestions {
-  margin-top: 0.5vh;
-  width: 37vw;
-  z-index: 2;
-
-  color: #267292;
-}
+// ul::-webkit-scrollbar {
+// }
 
 .filter-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  width: 100%;
 }
 
 .search-instruction-2 {
   margin-top: 30px;
-  font-size: 2.5em;
+  // font-size: 2.5em;
+  font-size: calc(17px + 0.45vw);
+
   text-shadow: 3px 3px 1 rgb(30, 30, 30);
 }
 
 .btn-primary {
   width: 10vw;
   height: 70px;
-  border-radius: 12px; // 10
+  border-radius: 15px;
   padding: 5px;
   border: none;
 
-  // color: $color-grey-dark-2;
   font-weight: 550;
   color: $color-main;
   text-shadow: 1px 1px 2 #3a779151;
 
   background-color: $color-grey-light-2;
-  box-shadow: 3px 3px rgba(6, 71, 103, 0.382);
+  box-shadow: 2px 2px rgba(0, 20, 50, 0.704);
 
-  font-size: 2rem;
+  font-size: calc(12px + 0.45vw);
   cursor: pointer;
 }
 
@@ -236,26 +271,67 @@ active {
 .btn-container-school {
   display: grid;
   grid-template-columns: repeat(4, auto);
+  justify-items: center;
 
-  margin-top: 20px;
+  width: 100%;
+  margin: 20px auto 0px;
   gap: 10px;
   row-gap: 12px;
+  // width: 100%; Ucini ih razmaknutim
+
+  @media only screen and (max-width: $bp-medium) {
+    column-gap: 2px;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    column-gap: 0.1%;
+    // width: 90%;
+  }
 }
 
 .btn-school {
-  min-width: 120px;
+  width: 95%;
+
+  @media only screen and (max-width: $bp-medium) {
+    height: 8.5vh;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    font-size: 3vw;
+    height: 7vh;
+  }
 }
 
 .btn-container-level {
   display: flex;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
   margin-top: 25px;
+  width: 100%;
+
+  @media only screen and (max-width: $bp-medium) {
+    gap: 8px;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    gap: 1.2%;
+  }
 }
 
 .btn-level {
   height: 60px;
   width: 60px;
-  min-width: 50px;
+  // min-width: 50px;
+
+  @media only screen and (max-width: $bp-medium) {
+    height: 50px;
+    width: 50px;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    height: 8vw;
+    width: 8vw;
+  }
 }
 
 .btn-search {
@@ -286,12 +362,12 @@ active {
   display: block;
   columns: 4;
 
-  width: 90%;
+  width: 95%;
   margin-top: 20px;
   margin-bottom: 40px;
   padding: 20px 15px;
   // padding-bottom: 8px; // Jer je margin-bottom 12px, pa ga offseta
-  border: 2px solid $color-grey-dark-2;
+  border: 2px solid #91858172;
   border-radius: 5px;
 }
 
@@ -299,6 +375,7 @@ active {
   // display: flex;
   // align-items: center;
   // justify-content: center;
+  overflow: inherit;
   text-align: center;
   vertical-align: center;
 
@@ -306,13 +383,13 @@ active {
   margin-bottom: 12px;
   padding: 5px;
   min-height: 30px;
-  width: 8em;
+  width: 18vw;
 
   color: $color-main;
   background-color: $color-grey-light-2;
   border: 2px solid #dcdcdc49;
   border-radius: 8px;
-  font-size: 2rem;
+  font-size: 2vw;
 
   break-inside: avoid;
 }

@@ -50,9 +50,9 @@ class FilterView {
   }
 
   displaySelectedSpells(filteredSpells) {
-    // 2) Scrolla window do filterovanih spellova, u ovisnosti od pozicije viewporta
+    // 1) Scrolla window do filterovanih spellova, u ovisnosti od pozicije viewporta
 
-    console.log(document.querySelector(".btn-search").getBoundingClientRect());
+    // console.log(document.querySelector(".btn-search").getBoundingClientRect());
 
     window.scrollTo({
       top:
@@ -64,10 +64,11 @@ class FilterView {
       behavior: "smooth",
     });
 
-    // 1) Displaya filterovane spellove
+    // 2) Displaya filterovane spellove
     this.filteredResults.innerHTML = "";
     for (const spell of filteredSpells) {
-      // console.log(spell);
+      // Special case u kojem je ime spella overflowalo parent element
+      if (spell.name.includes("/")) spell.name = spell.name.replace("/", "/\n");
       this.filteredResults.innerHTML += `<div class = "grid-item">${spell.name}</div>`;
     }
   }
