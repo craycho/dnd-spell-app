@@ -93,7 +93,7 @@ input:focus {
   }
 
   @media only screen and (max-width: $bp-smallest) {
-    margin-top: 15vh;
+    margin-top: 6vh;
   }
 
   // SA DISPLAY:GRID
@@ -321,7 +321,6 @@ active {
 .btn-level {
   height: 60px;
   width: 60px;
-  // min-width: 50px;
 
   @media only screen and (max-width: $bp-medium) {
     height: 50px;
@@ -350,19 +349,10 @@ active {
 }
 
 .filtered-container.is-filtered {
-  // display: grid;
-  // grid-template-columns: repeat(4, 25%);
-  // column-count: 4;
-  // justify-items: center;
-  // row-gap: 5px;
-
-  // display: flex;
-  // flex-direction: column;
-
   display: block;
-  columns: 4;
+  columns: 3;
 
-  width: 95%;
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 40px;
   padding: 20px 15px;
@@ -372,9 +362,6 @@ active {
 }
 
 .grid-item {
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   overflow: inherit;
   text-align: center;
   vertical-align: center;
@@ -383,13 +370,13 @@ active {
   margin-bottom: 12px;
   padding: 5px;
   min-height: 30px;
-  width: 18vw;
+  min-width: 1fr;
 
   color: $color-main;
   background-color: $color-grey-light-2;
   border: 2px solid #dcdcdc49;
   border-radius: 8px;
-  font-size: 2vw;
+  font-size: 2em;
 
   break-inside: avoid;
 }
