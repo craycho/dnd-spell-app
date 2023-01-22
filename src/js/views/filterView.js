@@ -61,20 +61,25 @@ class FilterView {
       behavior: "smooth",
     });
 
-    // 2) Displaya filterovane spellove
-    this.filteredResults.style.columns = 3;
+    // 2) Displaya filterovane spellove i sortira po imenu
+    let currentLetter = "";
+    // this.filteredResults.style.columns = 3; // BITNO kada je vise od 1 kolone
     this.filteredResults.innerHTML = "";
+
     for (const spell of filteredSpells) {
       // Special case u kojem je ime spella overflowalo parent element
       // if (spell.name.includes("/")) spell.name = spell.name.replace("/", "/\n");
 
+      if (spell.name[0] !== currentLetter) {
+        currentLetter !== "" ? (this.filteredResults.innerHTML += `<br>`) : "";
+        currentLetter = spell.name[0];
+        this.filteredResults.innerHTML += `<span class="letter-group">${currentLetter}</span>`;
+      }
+
       this.filteredResults.innerHTML += `<div class = "grid-item">${spell.name}</div>`;
     }
     // 2.1) Special case kada je manje od 5 spellova
-    if (filteredSpells.length <= 5) this.filteredResults.style.columns = 1;
-
-    // 3) Grupise filterovane spellove po imenu (not yet implemented)
-    // filteredSpells.forEach(spell => console.log(spell.name));
+    // if (filteredSpells.length <= 5) this.filteredResults.style.columns = 1;
   }
 
   addHandlerResults(handler) {

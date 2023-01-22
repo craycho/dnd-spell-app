@@ -334,7 +334,7 @@ active {
 
 .filtered-container.is-filtered {
   display: block;
-  columns: 3;
+  columns: 1;
 
   width: 100%;
   // margin-top: 20px;
@@ -342,6 +342,11 @@ active {
   padding: 15px 10px;
   border: 2px solid #91858172;
   border-radius: 5px;
+}
+
+.letter-group {
+  font-size: 3vh;
+  text-shadow: 3px 3px 2 rgb(30, 30, 30);
 }
 
 .grid-item {
