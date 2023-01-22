@@ -68,9 +68,13 @@ class FilterView {
     this.filteredResults.innerHTML = "";
     for (const spell of filteredSpells) {
       // Special case u kojem je ime spella overflowalo parent element
-      if (spell.name.includes("/")) spell.name = spell.name.replace("/", "/\n");
+      // if (spell.name.includes("/")) spell.name = spell.name.replace("/", "/\n");
+
       this.filteredResults.innerHTML += `<div class = "grid-item">${spell.name}</div>`;
     }
+
+    // 3) Grupise filterovane spellove po imenu
+    filteredSpells.forEach(spell => console.log(spell.name));
   }
 
   addHandlerResults(handler) {

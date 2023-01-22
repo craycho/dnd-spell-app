@@ -68,18 +68,13 @@ input:focus {
 // }
 
 .container {
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-
   display: flex;
   flex-direction: column;
   align-items: center;
 
   width: 95%;
   max-width: 75rem;
-  min-height: 60rem;
+  min-height: 55rem;
   margin: 40px auto;
   padding: 0px 2vw;
 
@@ -95,38 +90,23 @@ input:focus {
   @media only screen and (max-width: $bp-smallest) {
     margin-top: 6vh;
   }
-
-  // SA DISPLAY:GRID
-  // grid-template-rows: 12% min-content min-content;
-  // justify-content: center;
-  // align-items: flex-start;
-
-  // grid-template-rows: 10rem minmax(100rem, auto);
-  // grid-template-columns: 1fr 2fr;
-  // grid-template-areas:
-  //   "head head"
-  //   "list recipe";
-
-  // // OVO PRAVI CONTAINER BUG
-  // @media only screen and (max-width: $bp-large) {
-  //   max-width: 100%;
-  //   margin: 0;
-  //   border-radius: 0;
-  // }
 }
 
 .search-instruction {
-  margin-top: 25px;
-  margin-bottom: 30px;
-  // font-size: 3.5em;
-  font-size: calc(18px + 0.6vw);
+  max-width: 100%;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  font-size: calc(13px + 1.2vw);
 
   text-shadow: 3px 3px 1 rgb(30, 30, 30);
-  white-space: nowrap;
+  // white-space: nowrap;
 }
 
-.bi-arrow-right-short {
-  font-size: 300%;
+.search-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .search-spell {
@@ -138,19 +118,17 @@ input:focus {
 }
 
 #form-spell {
+  // position: relative;
   height: 12vh;
   width: 100%;
-  // min-width: 30em;
-
   padding-left: 1.5rem;
-  position: relative;
-  border: 6px inset $color-main;
 
+  border: 6px inset $color-main;
   border-radius: 40px;
   font-size: 2rem;
 
   @media only screen and (max-width: $bp-small) {
-    max-height: 10vh;
+    max-height: 8vh;
   }
 
   // Ne vidi se search query kada je gradient
@@ -191,9 +169,15 @@ input[type="search"]::-webkit-search-cancel-button {
 .suggestions {
   margin-top: 0.5vh;
   width: 70%;
-  z-index: 2;
-
   color: #267292;
+
+  z-index: 2;
+  position: absolute;
+  top: 12vh;
+
+  @media only screen and (max-width: $bp-small) {
+    top: 8vh;
+  }
 }
 
 ul {
@@ -234,29 +218,25 @@ ul li:hover {
 }
 
 .search-instruction-2 {
-  margin-top: 30px;
-  // font-size: 2.5em;
-  font-size: calc(17px + 0.45vw);
-
+  margin-top: 40px;
+  font-size: calc(13px + 0.8vw);
   text-shadow: 3px 3px 1 rgb(30, 30, 30);
 }
 
 .btn-primary {
-  width: 10vw;
-  height: 70px;
-  border-radius: 15px;
-  padding: 5px;
-  border: none;
+  cursor: pointer;
 
+  border: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px rgba(0, 20, 50, 0.704);
   font-weight: 550;
   color: $color-main;
   text-shadow: 1px 1px 2 #3a779151;
-
-  background-color: $color-grey-light-2;
-  box-shadow: 2px 2px rgba(0, 20, 50, 0.704);
-
   font-size: calc(12px + 0.45vw);
-  cursor: pointer;
+
+  @media only screen and (max-width: $bp-small) {
+    border-radius: 10px;
+  }
 }
 
 .btn-primary:hover,
@@ -274,10 +254,9 @@ active {
   justify-items: center;
 
   width: 100%;
-  margin: 20px auto 0px;
+  margin: 25px auto 0px;
   gap: 10px;
   row-gap: 12px;
-  // width: 100%; Ucini ih razmaknutim
 
   @media only screen and (max-width: $bp-medium) {
     column-gap: 2px;
@@ -285,20 +264,16 @@ active {
 
   @media only screen and (max-width: $bp-small) {
     column-gap: 0.1%;
-    // width: 90%;
   }
 }
 
 .btn-school {
   width: 95%;
-
-  @media only screen and (max-width: $bp-medium) {
-    height: 8.5vh;
-  }
+  min-height: 8vh;
 
   @media only screen and (max-width: $bp-small) {
     font-size: 3vw;
-    height: 7vh;
+    min-height: 5vh;
   }
 }
 
@@ -314,34 +289,43 @@ active {
   }
 
   @media only screen and (max-width: $bp-small) {
-    gap: 1.2%;
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50% 50%;
+    justify-items: center;
   }
 }
 
 .btn-level {
-  height: 60px;
-  width: 60px;
+  // height: 60px;
+  // width: 60px;
+  height: 5.9rem;
+  width: 5.9rem;
 
-  @media only screen and (max-width: $bp-medium) {
-    height: 50px;
-    width: 50px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media only screen and (max-width: $bp-small) {
-    height: 8vw;
-    width: 8vw;
+    // height: 5rem;
+    // width: 5rem;
   }
 }
 
 .btn-search {
   margin-top: 30px;
   margin-bottom: 30px;
-  min-width: 80%;
+  min-width: 70%;
+  min-height: 10vh;
   background-image: $gradient-2;
   color: $color-grey-light-1;
   text-shadow: 2px 2px 2 rgb(30, 30, 30);
-
   box-shadow: 4px 4px rgba(0, 0, 0, 0.084);
+
+  @media only screen and (max-width: $bp-smallest) {
+    min-height: 8.5vh;
+  }
 }
 
 .filtered-container {
@@ -353,32 +337,40 @@ active {
   columns: 3;
 
   width: 100%;
-  margin-top: 20px;
+  // margin-top: 20px;
   margin-bottom: 40px;
-  padding: 20px 15px;
-  // padding-bottom: 8px; // Jer je margin-bottom 12px, pa ga offseta
+  padding: 15px 10px;
   border: 2px solid #91858172;
   border-radius: 5px;
 }
 
 .grid-item {
-  overflow: inherit;
-  text-align: center;
-  vertical-align: center;
+  display: flex;
+  align-items: center;
+  text-align: center; // Radi multi-line spellova
+  justify-content: center;
 
   margin: auto;
   margin-bottom: 12px;
   padding: 5px;
   min-height: 30px;
   min-width: 1fr;
+  break-inside: avoid;
 
   color: $color-main;
   background-color: $color-grey-light-2;
   border: 2px solid #dcdcdc49;
   border-radius: 8px;
-  font-size: 2em;
+  // font-size: 1.6em;
+  font-size: calc(10px + 0.6vw);
 
-  break-inside: avoid;
+  // Ako je spell name prevelik, hidea ostatak
+  // white-space: nowrap;
+  // overflow: hidden;
+
+  @media only screen and (max-width: $bp-smallest) {
+    font-size: calc(8px + 0.6vw);
+  }
 }
 
 .grid-item:hover,

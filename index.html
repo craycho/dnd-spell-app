@@ -13,22 +13,24 @@
     <div class="wrapper">
       <div class="container">
         <h1 class="search-instruction">Start by typing the name of a spell:</h1>
-        <form class="search-spell" autocomplete="off">
-          <!-- <div class="search-outline"> -->
-          <input
-            type="text"
-            id="form-spell"
-            placeholder="e.g. 'Fireball'"
-            onkeypress="return event.keyCode != 13;"
-          />
-          <!-- <label class="form-label" for="form-spell">Search</label> -->
-          <!-- </div> -->
-          <!-- <button type="submit" class="btn btn-primary">
+        <div class="search-section">
+          <form class="search-spell" autocomplete="off">
+            <!-- <div class="search-outline"> -->
+            <input
+              type="text"
+              id="form-spell"
+              placeholder="e.g. 'Fireball'"
+              onkeypress="return event.keyCode != 13;"
+            />
+            <!-- <label class="form-label" for="form-spell">Search</label> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-primary">
           <i class="bi bi-arrow-right-short"></i>
         </button> -->
-        </form>
-        <div class="suggestions">
-          <ul></ul>
+          </form>
+          <div class="suggestions">
+            <ul></ul>
+          </div>
         </div>
 
         <div class="spell-preview hidden"></div>
