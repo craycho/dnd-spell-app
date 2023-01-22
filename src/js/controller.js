@@ -1,6 +1,4 @@
 /**@todo Fix scrollTo bug */
-/**@todo Fix background moving bug */
-/**@todo Fix suggestion container scaling */
 
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
