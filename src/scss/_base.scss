@@ -36,11 +36,15 @@ $bp-smallest: 31.25em; // 500px
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  // overflow-y: scroll; // Fixa jumping scrollbar issue, ali izgleda ruznije
+  overflow-y: scroll; // Fix za jumping scrollbar issue
 
   @media only screen and (max-width: $bp-medium) {
     font-size: 50%;
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -206,9 +210,6 @@ ul li {
 ul li:hover {
   background-color: $color-accent;
 }
-
-// ul::-webkit-scrollbar {
-// }
 
 .filter-section {
   display: flex;
