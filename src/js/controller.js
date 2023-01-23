@@ -1,4 +1,7 @@
 /**@todo Fix scrollTo bug */
+/**@todo Fixaj .index of undefined bug, izgleda da calla model.loadSelectedSpell sa undefined */
+/**@todo Implementiraj pagination za vise slova odjednom */
+/**@todo Implementiraj da je trenutni pagination page highlightan */
 
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
@@ -18,6 +21,7 @@ const init = function () {
   filterView.addHandlerLevel();
   filterView.addHandlerSearch(controlFilteredSpells);
   filterView.addHandlerResults(controlDisplayFilteredSpells);
+  filterView.addHandlerPagination(controlDisplayPagination);
 };
 init();
 
@@ -146,6 +150,17 @@ async function controlDisplayFilteredSpells(spellName) {
 
   // 3) Displaya getani spell
   spellView.displaySpell(spell);
+}
+
+function controlDisplayPagination(clickedPage) {
+  const filteredResults = document.querySelector(".filtered-container");
+  filteredResults.innerHTML = ""; // Kada je ovo off, moze se dodavati vise slova odjednom, ali ih ponavlja
+
+  for (const spell of model.state.filteredSpells) {
+    if (spell.name[0] === clickedPage) {
+      filteredResults.innerHTML += `<div class = "grid-item">${spell.name}</div>`;
+    }
+  }
 }
 
 /* CONTROL SEARCH SA LISTOM 
