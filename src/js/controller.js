@@ -1,11 +1,7 @@
-/**@todo Fix scrollTo bug */
-
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";
 import spellView from "./views/spellView.js";
 import filterView from "./views/filterView.js";
-//import { API_URL, TIMEOUT_SECONDS } from "./config.js";
-//import { timeout } from "./helpers.js";
 
 const init = function () {
   window.addEventListener("DOMContentLoaded", model.loadSpells);

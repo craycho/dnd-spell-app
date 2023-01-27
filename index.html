@@ -10,85 +10,73 @@
     <title>D&D App</title>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="container">
-        <h1 class="search-instruction">Start by typing the name of a spell:</h1>
-        <div class="search-section">
-          <form class="search-spell" autocomplete="off">
-            <!-- <div class="search-outline"> -->
-            <input
-              type="text"
-              id="form-spell"
-              placeholder="e.g. 'Fireball'"
-              onkeypress="return event.keyCode != 13;"
-            />
-            <!-- <label class="form-label" for="form-spell">Search</label> -->
-            <!-- </div> -->
-            <!-- <button type="submit" class="btn btn-primary">
-          <i class="bi bi-arrow-right-short"></i>
-        </button> -->
-          </form>
-          <div class="suggestions">
-            <ul></ul>
-          </div>
+    <div class="container">
+      <h1 class="search-instruction">Start by typing the name of a spell:</h1>
+      <div class="search-section">
+        <form class="search-spell" autocomplete="off">
+          <!-- <div class="search-outline"> -->
+          <input
+            type="text"
+            id="form-spell"
+            placeholder="e.g. 'Fireball'"
+            onkeypress="return event.keyCode != 13;"
+          />
+        </form>
+        <div class="suggestions">
+          <ul></ul>
         </div>
+      </div>
 
-        <div class="spell-preview hidden"></div>
+      <div class="spell-preview hidden"></div>
 
-        <h1 class="search-instruction-2">Or choosing a school & level:</h1>
+      <h1 class="search-instruction-2">Or choosing a school & level:</h1>
 
-        <div class="filter-section">
-          <div class="btn-container-school">
-            <button type="submit" class="btn-primary btn-school">
-              Abjuration
-            </button>
-            <button type="submit" class="btn-primary btn-school">
-              Conjuration
-            </button>
-            <button type="submit" class="btn-primary btn-school">
-              Divination
-            </button>
-            <button type="submit" class="btn-primary btn-school">
-              Enchantment
-            </button>
-            <button type="submit" class="btn-primary btn-school">
-              Evocation
-            </button>
-            <button type="submit" class="btn-primary btn-school">
-              Illusion
-            </button>
-            <button type="submit" class="btn-primary btn-school">
-              Necromancy
-            </button>
-            <button type="submit" class="btn-primary btn-school">
-              Transmutation
-            </button>
-          </div>
-
-          <div class="btn-container-level">
-            <button type="submit" class="btn-primary btn-level">0</button>
-            <button type="submit" class="btn-primary btn-level">1</button>
-            <button type="submit" class="btn-primary btn-level">2</button>
-            <button type="submit" class="btn-primary btn-level">3</button>
-            <button type="submit" class="btn-primary btn-level">4</button>
-            <button type="submit" class="btn-primary btn-level">5</button>
-            <button type="submit" class="btn-primary btn-level">6</button>
-            <button type="submit" class="btn-primary btn-level">7</button>
-            <button type="submit" class="btn-primary btn-level">8</button>
-            <button type="submit" class="btn-primary btn-level">9</button>
-          </div>
-          <button type="submit" class="btn-primary btn-search">
-            Search by school & level
+      <div class="filter-section">
+        <div class="btn-container-school">
+          <button type="submit" class="btn-primary btn-school">
+            Abjuration
+          </button>
+          <button type="submit" class="btn-primary btn-school">
+            Conjuration
+          </button>
+          <button type="submit" class="btn-primary btn-school">
+            Divination
+          </button>
+          <button type="submit" class="btn-primary btn-school">
+            Enchantment
+          </button>
+          <button type="submit" class="btn-primary btn-school">
+            Evocation
+          </button>
+          <button type="submit" class="btn-primary btn-school">Illusion</button>
+          <button type="submit" class="btn-primary btn-school">
+            Necromancy
+          </button>
+          <button type="submit" class="btn-primary btn-school">
+            Transmutation
           </button>
         </div>
 
-        <div class="filter-results-section">
-          <div class="filtered-container"></div>
-          <ul class="pagination-spells"></ul>
+        <div class="btn-container-level">
+          <button type="submit" class="btn-primary btn-level">0</button>
+          <button type="submit" class="btn-primary btn-level">1</button>
+          <button type="submit" class="btn-primary btn-level">2</button>
+          <button type="submit" class="btn-primary btn-level">3</button>
+          <button type="submit" class="btn-primary btn-level">4</button>
+          <button type="submit" class="btn-primary btn-level">5</button>
+          <button type="submit" class="btn-primary btn-level">6</button>
+          <button type="submit" class="btn-primary btn-level">7</button>
+          <button type="submit" class="btn-primary btn-level">8</button>
+          <button type="submit" class="btn-primary btn-level">9</button>
         </div>
-        <!-- <div class="filter-results">
-        <ul></ul>
-      </div> -->
+        <button type="submit" class="btn-primary btn-search">
+          Search by school & level
+        </button>
+      </div>
+
+      <div class="filter-results-section">
+        <div class="filtered-container"></div>
+        <ul class="pagination-spells"></ul>
       </div>
     </div>
   </body>

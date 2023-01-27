@@ -1,7 +1,6 @@
-// $color-primary: #f59a83;
-$color-primary: #f38e82;
-// $color-grad-1: #fbdb89;
-// $color-grad-2: #f48982;
+$color-main: #267292;
+$color-accent: #a9e1f9;
+
 $color-grad-1: #040404;
 $color-grad-2: #df0000;
 
@@ -10,9 +9,6 @@ $color-grey-light-2: #f2efee; // Light lines
 $color-grey-light-3: #c2c1c1; // Light text (placeholder)
 $color-grey-dark-1: #615551; // Normal text
 $color-grey-dark-2: #918581; // Lighter text
-
-$color-main: #267292;
-$color-accent: #91c5db;
 
 $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
 $gradient-2: linear-gradient(to right bottom, $color-grad-1, $color-main);
@@ -65,13 +61,6 @@ input:focus {
   outline: none;
 }
 
-// .wrapper {
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -83,7 +72,7 @@ input:focus {
   margin: 40px auto;
   padding: 0px 2vw;
 
-  background-color: rgba(0, 0, 0, 0.488);
+  background-color: rgba(0, 0, 0, 0.53);
   border-radius: 9px;
   overflow: hidden;
   box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
@@ -103,8 +92,7 @@ input:focus {
   margin-bottom: 25px;
   font-size: calc(13px + 1.2vw);
 
-  text-shadow: 3px 3px 1 rgb(30, 30, 30);
-  // white-space: nowrap;
+  text-shadow: 2px 2px 1px rgb(30, 30, 30);
 }
 
 .search-section {
@@ -222,7 +210,7 @@ ul li:hover {
 .search-instruction-2 {
   margin-top: 40px;
   font-size: calc(13px + 0.8vw);
-  text-shadow: 3px 3px 1 rgb(30, 30, 30);
+  text-shadow: 2px 2px 1px rgb(30, 30, 30);
 }
 
 .btn-primary {
@@ -230,7 +218,7 @@ ul li:hover {
 
   border: none;
   border-radius: 15px;
-  box-shadow: 2px 2px rgba(0, 20, 50, 0.704);
+  box-shadow: 2px 2px 2px rgba(0, 20, 50, 0.3);
   font-weight: 550;
   color: $color-main;
   text-shadow: 1px 1px 2 #3a779151;
@@ -320,7 +308,7 @@ active {
   min-height: 10vh;
   background-image: $gradient-2;
   color: $color-grey-light-1;
-  text-shadow: 2px 2px 2 rgb(30, 30, 30);
+  text-shadow: 1.5px 1.5px 1px rgb(30, 30, 30);
   box-shadow: 4px 4px rgba(0, 0, 0, 0.084);
 
   @media only screen and (max-width: $bp-smallest) {
@@ -351,7 +339,6 @@ active {
   row-gap: 12px;
 
   width: 100%;
-  // margin-top: 20px;
   margin-bottom: 20px;
   padding: 15px 10px;
   border: 2px solid #91858172;
@@ -379,6 +366,7 @@ active {
   border: 2px solid #dcdcdc49;
   border-radius: 8px;
   font-size: calc(10px + 0.6vw);
+  box-shadow: 2px 1.5px 2px #001432b4;
 
   // Ako je spell name prevelik, hidea ostatak
   // white-space: nowrap;
@@ -413,6 +401,7 @@ active {
 
   background-color: transparent;
   box-shadow: none;
+  overflow: visible; // Radi box-shadow
 }
 
 .page-item {
@@ -426,14 +415,17 @@ active {
 
   background: rgba(255, 255, 255, 0.18);
   color: $color-grey-light-2;
+  border-bottom: none;
+  box-shadow: 0.5px 0.8px 1px $color-grad-1;
+
   // background: $color-grey-light-2;
   // color: $color-main;
 }
 
 .page-item:hover {
-  background-color: $color-accent;
+  background-color: $color-main;
 }
 
 .page-item.current {
-  background-color: $color-accent;
+  background-color: $color-main;
 }
