@@ -11,5 +11,8 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2",
     "parcel": "^2.8.2"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.10.3"
   }
 }

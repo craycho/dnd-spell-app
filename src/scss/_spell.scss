@@ -1,4 +1,49 @@
-.recipe {
+.hidden {
+  display: none;
+}
+
+.spell-preview {
+  z-index: 1;
+
+  margin-top: 3.5%; // 1.5%
+  margin-left: 18%;
+  margin-right: 18%;
+  padding: 1vw 1.5vw;
+  min-width: 75%;
+
+  background-color: #f8efd0;
+  color: #762f0e;
+  border: 3px solid $color-grey-light-2;
+  border-radius: 10px;
+  font-size: 1.5rem;
+
+  @media only screen and (max-width: $bp-smallest) {
+    min-width: 90%;
+  }
+}
+
+.spell-preview p {
+  margin-bottom: 1rem;
+}
+
+.break-small {
+  display: block;
+  margin-bottom: 1em;
+}
+
+// UNORDERED LIST
+// .filter-results {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+
+//   margin-top: 10px;
+//   min-height: fit-content;
+// }
+
+// Random SCSS stuff, probably delete later
+
+/* .recipe {
   background-color: $color-grey-light-1;
 
   ///////////
@@ -177,3 +222,4 @@
     font-weight: 700;
   }
 }
+ */

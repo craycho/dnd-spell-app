@@ -1,0 +1,431 @@
+$color-main: #267292;
+$color-accent: #a9e1f9;
+
+$color-grad-1: #040404;
+$color-grad-2: #df0000;
+
+$color-grey-light-1: #f9f5f3; // Light background
+$color-grey-light-2: #f2efee; // Light lines
+$color-grey-light-3: #c2c1c1; // Light text (placeholder)
+$color-grey-dark-1: #615551; // Normal text
+$color-grey-dark-2: #918581; // Lighter text
+
+$gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
+$gradient-2: linear-gradient(to right bottom, $color-grad-1, $color-main);
+
+$bp-large: 78.15em; // 1250px
+$bp-medium: 61.25em; // 980px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 31.25em; // 500px
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  overflow-y: scroll; // Fix za jumping scrollbar issue
+
+  @media only screen and (max-width: $bp-medium) {
+    font-size: 50%;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: $color-grey-light-2;
+
+  background-image: url("../img/background-img.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 2 * 4vw);
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 95%;
+  max-width: 75rem;
+  min-height: 55rem;
+  margin: 40px auto;
+  padding: 0px 2vw;
+
+  background-color: rgba(0, 0, 0, 0.53);
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0px 2vw;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    margin-top: 6vh;
+  }
+}
+
+.search-instruction {
+  max-width: 100%;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  font-size: calc(13px + 1.2vw);
+
+  text-shadow: 2px 2px 1px rgb(30, 30, 30);
+}
+
+.search-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-spell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 80%;
+}
+
+#form-spell {
+  // position: relative;
+  height: 12vh;
+  width: 100%;
+  padding-left: 1.5rem;
+
+  border: 6px inset $color-main;
+  border-radius: 40px;
+  font-size: 2em;
+
+  @media only screen and (max-width: $bp-small) {
+    max-height: 8vh;
+  }
+
+  // Ne vidi se search query kada je gradient
+  // border-image: $gradient 10;
+  // border-width: 10px;
+  // border-style: solid;
+  // border-radius: 13px;
+  // border: 10px solid transparent;
+  // background: $gradient border-box;
+  // -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+
+  // -webkit-mask-composite: xor;
+  // mask-composite: exclude;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $color-grey-light-3;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $color-grey-light-3;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $color-grey-light-3;
+}
+
+// Ukine mali "x" prilikom searchanja pojma
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.suggestions {
+  margin-top: 0.5vh;
+  width: 70%;
+  color: #267292;
+
+  z-index: 2;
+  position: absolute;
+  top: 12vh;
+
+  @media only screen and (max-width: $bp-small) {
+    top: 8vh;
+  }
+}
+
+ul {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  max-height: 400px;
+  overflow-y: auto;
+  // background-color: $color-grey-light-2;
+  background-color: #f2efeec6;
+}
+ul.has-suggestions {
+  display: block;
+  border-radius: 5px;
+}
+ul li {
+  padding: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 2rem;
+  border-bottom: 1px ridge #b7b7b76f; // #e4e4e49c
+}
+ul li:hover {
+  background-color: $color-accent;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+
+.search-instruction-2 {
+  margin-top: 40px;
+  font-size: calc(13px + 0.8vw);
+  text-shadow: 2px 2px 1px rgb(30, 30, 30);
+}
+
+.btn-primary {
+  cursor: pointer;
+
+  border: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px rgba(0, 20, 50, 0.3);
+  font-weight: 550;
+  color: $color-main;
+  text-shadow: 1px 1px 2 #3a779151;
+  font-size: calc(12px + 0.45vw);
+
+  @media only screen and (max-width: $bp-small) {
+    border-radius: 10px;
+  }
+}
+
+.btn-primary:hover,
+active {
+  background-color: $color-accent;
+}
+
+.btn-primary.selected {
+  background-color: $color-accent;
+}
+
+.btn-container-school {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-items: center;
+
+  width: 100%;
+  margin: 25px auto 0px;
+  gap: 10px;
+  row-gap: 12px;
+
+  @media only screen and (max-width: $bp-medium) {
+    column-gap: 2px;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    column-gap: 0.1%;
+  }
+}
+
+.btn-school {
+  width: 95%;
+  min-height: 8vh;
+
+  @media only screen and (max-width: $bp-small) {
+    font-size: 3vw;
+    min-height: 5vh;
+  }
+}
+
+.btn-container-level {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+  width: 100%;
+
+  @media only screen and (max-width: $bp-medium) {
+    gap: 8px;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50% 50%;
+    justify-items: center;
+  }
+}
+
+.btn-level {
+  height: 5.9rem;
+  width: 5.9rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: $bp-small) {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+.btn-search {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  min-width: 70%;
+  min-height: 10vh;
+  background-image: $gradient-2;
+  color: $color-grey-light-1;
+  text-shadow: 1.5px 1.5px 1px rgb(30, 30, 30);
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.084);
+
+  @media only screen and (max-width: $bp-smallest) {
+    min-height: 8.5vh;
+  }
+}
+
+.filter-results-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filtered-container {
+  display: none;
+}
+
+.filtered-container.is-filtered {
+  // display: block;
+  // columns: 2;
+  display: grid;
+  grid-auto-columns: 50%;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+
+  justify-items: center;
+  row-gap: 12px;
+
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px 10px;
+  border: 2px solid #91858172;
+  border-radius: 5px;
+}
+
+.letter-group {
+  font-size: 3vh;
+  text-shadow: 3px 3px 2 rgb(30, 30, 30);
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  text-align: center; // Radi multi-line spellova
+  justify-content: center;
+
+  min-width: 80%;
+  padding: 5px;
+  min-height: 30px;
+  break-inside: avoid;
+
+  color: $color-main;
+  background-color: $color-grey-light-2;
+  border: 2px solid #dcdcdc49;
+  border-radius: 8px;
+  font-size: calc(10px + 0.6vw);
+  box-shadow: 2px 1.5px 2px #001432b4;
+
+  // Ako je spell name prevelik, hidea ostatak
+  // white-space: nowrap;
+  // overflow: hidden;
+
+  @media only screen and (max-width: $bp-smallest) {
+    font-size: calc(8px + 0.6vw);
+  }
+}
+// Centrira zadnji item ako je sam u nizu
+.grid-item:nth-child(2n-1):last-of-type {
+  grid-column: 1 / -1;
+}
+
+.grid-item:hover,
+active {
+  background-color: $color-accent;
+  cursor: pointer;
+}
+
+.pagination-spells {
+  display: none;
+}
+
+.pagination-spells.visible {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 5vh;
+  width: 100%;
+
+  background-color: transparent;
+  box-shadow: none;
+  overflow: visible; // Radi box-shadow
+}
+
+.page-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+  width: 1.5em;
+  height: 1.5em;
+
+  background: rgba(255, 255, 255, 0.18);
+  color: $color-grey-light-2;
+  border-bottom: none;
+  box-shadow: 0.5px 0.8px 1px $color-grad-1;
+
+  // background: $color-grey-light-2;
+  // color: $color-main;
+}
+
+.page-item:hover {
+  background-color: $color-main;
+}
+
+.page-item.current {
+  background-color: $color-main;
+}
