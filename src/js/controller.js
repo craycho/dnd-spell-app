@@ -1,5 +1,4 @@
 /**@todo Fix scrollTo bug */
-/**@todo Implementiraj da je trenutni pagination page highlightan */
 
 import * as model from "./model.js";
 import searchView from "./views/searchView.js";

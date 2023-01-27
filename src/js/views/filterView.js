@@ -102,8 +102,8 @@ class FilterView {
 
     // Automatski displaya prvu stranicu
     let firstLetter = filteredSpells[0].name[0];
+    document.querySelector(".page-item").classList.add("current");
 
-    // this.filteredResults.style.display = "block";
     // Displaya spellove na osnovu odabranog pocetnog slova
     for (const spell of filteredSpells) {
       if (spell.name[0] === firstLetter) {
@@ -116,9 +116,12 @@ class FilterView {
     const pagination = document.querySelector(".pagination-spells");
 
     pagination.addEventListener("click", function (e) {
-      // e.target.classList.toggle("current");
+      // Handlea highlighting trenutne stranice
+      const allPages = document.querySelectorAll(".pagination-spells li");
+      allPages.forEach(page => page.classList.remove("current"));
+      e.target.classList.add("current");
+
       if (e.target.closest("li")) handler(e.target.textContent);
-      // if (e.target.textContent.length === 1)
     });
   }
 }
