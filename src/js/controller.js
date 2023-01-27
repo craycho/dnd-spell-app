@@ -1,5 +1,4 @@
 /**@todo Fix scrollTo bug */
-/**@todo Implementiraj pagination za vise slova odjednom */
 /**@todo Implementiraj da je trenutni pagination page highlightan */
 
 import * as model from "./model.js";
@@ -144,7 +143,6 @@ async function controlDisplayFilteredSpells(spellName) {
   const spells = model.state.spellList;
   const [selectedSpell] = spells.filter(spell => spell.name === spellName);
 
-  console.log(selectedSpell);
   // 2) API poziv na osnovu indexa izabranog spella
   const spell = await model.loadSelectedSpell(selectedSpell);
 

@@ -64,6 +64,11 @@ class FilterView {
     // 2) Displaya filterovane spellove (displaya u paginationu ako ih je >12)
     this.filteredResults.innerHTML = "";
 
+    // Resetuje pagination prije provjere >12
+    const pagination = document.querySelector(".pagination-spells");
+    pagination.classList.remove("visible");
+    this.filteredResults.classList.remove("has-pagination");
+
     if (filteredSpells.length >= 12) {
       this.generatePagination(filteredSpells);
     } else {
@@ -75,7 +80,8 @@ class FilterView {
 
   addHandlerResults(handler) {
     this.filteredResults.addEventListener("click", function (e) {
-      handler(e.target.textContent);
+      if (e.target.classList.contains("grid-item"))
+        handler(e.target.textContent);
     });
   }
 
@@ -83,10 +89,10 @@ class FilterView {
     const pagination = document.querySelector(".pagination-spells");
     pagination.innerHTML = "";
     pagination.classList.add("visible");
-    this.filteredResults.classList.add("has-pagination");
 
     let currentLetter = "";
 
+    // Dinamicki displaya pagination na osnovu pocetnih slova spellova
     for (const spell of filteredSpells) {
       if (spell.name[0] !== currentLetter) {
         currentLetter = spell.name[0];
@@ -94,9 +100,11 @@ class FilterView {
       }
     }
 
-    // Displaya prvu stranicu automatski
+    // Automatski displaya prvu stranicu
     let firstLetter = filteredSpells[0].name[0];
 
+    // this.filteredResults.style.display = "block";
+    // Displaya spellove na osnovu odabranog pocetnog slova
     for (const spell of filteredSpells) {
       if (spell.name[0] === firstLetter) {
         this.filteredResults.innerHTML += `<div class = "grid-item">${spell.name}</div>`;
@@ -109,7 +117,8 @@ class FilterView {
 
     pagination.addEventListener("click", function (e) {
       // e.target.classList.toggle("current");
-      if (e.target.textContent.length === 1) handler(e.target.textContent);
+      if (e.target.closest("li")) handler(e.target.textContent);
+      // if (e.target.textContent.length === 1)
     });
   }
 }

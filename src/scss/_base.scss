@@ -130,7 +130,7 @@ input:focus {
 
   border: 6px inset $color-main;
   border-radius: 40px;
-  font-size: 2rem;
+  font-size: 2em;
 
   @media only screen and (max-width: $bp-small) {
     max-height: 8vh;
@@ -328,13 +328,27 @@ active {
   }
 }
 
+.filter-results-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .filtered-container {
   display: none;
 }
 
 .filtered-container.is-filtered {
-  display: block;
-  columns: 2;
+  // display: block;
+  // columns: 2;
+  display: grid;
+  grid-auto-columns: 50%;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+
+  justify-items: center;
+  row-gap: 12px;
 
   width: 100%;
   // margin-top: 20px;
@@ -342,12 +356,6 @@ active {
   padding: 15px 10px;
   border: 2px solid #91858172;
   border-radius: 5px;
-}
-
-.filtered-container.is-filtered.has-pagination {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .letter-group {
@@ -361,18 +369,15 @@ active {
   text-align: center; // Radi multi-line spellova
   justify-content: center;
 
-  margin: auto;
-  margin-bottom: 12px;
+  min-width: 80%;
   padding: 5px;
   min-height: 30px;
-  min-width: 1fr;
   break-inside: avoid;
 
   color: $color-main;
   background-color: $color-grey-light-2;
   border: 2px solid #dcdcdc49;
   border-radius: 8px;
-  // font-size: 1.6em;
   font-size: calc(10px + 0.6vw);
 
   // Ako je spell name prevelik, hidea ostatak
@@ -383,19 +388,15 @@ active {
     font-size: calc(8px + 0.6vw);
   }
 }
+// Centrira zadnji item ako je sam u nizu
+.grid-item:nth-child(2n-1):last-of-type {
+  grid-column: 1 / -1;
+}
 
 .grid-item:hover,
 active {
   background-color: $color-accent;
   cursor: pointer;
-}
-
-.filter-results-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .pagination-spells {
@@ -405,6 +406,7 @@ active {
 .pagination-spells.visible {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 5vh;
   width: 100%;
@@ -419,8 +421,13 @@ active {
   justify-content: center;
 
   border-radius: 15px;
-  width: 2vw;
-  height: 2vw;
+  width: 1.5em;
+  height: 1.5em;
+
+  background: rgba(255, 255, 255, 0.18);
+  color: $color-grey-light-2;
+  // background: $color-grey-light-2;
+  // color: $color-main;
 }
 
 .page-item:hover,
