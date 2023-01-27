@@ -1,5 +1,4 @@
 /**@todo Fix scrollTo bug */
-/**@todo Fixaj .index of undefined bug, izgleda da calla model.loadSelectedSpell sa undefined */
 /**@todo Implementiraj pagination za vise slova odjednom */
 /**@todo Implementiraj da je trenutni pagination page highlightan */
 
@@ -11,9 +10,9 @@ import filterView from "./views/filterView.js";
 //import { timeout } from "./helpers.js";
 
 const init = function () {
-  window.addEventListener("load", model.loadSpells);
+  window.addEventListener("DOMContentLoaded", model.loadSpells);
   searchView.addHandlerSearch(controlSearch);
-  searchView.addHandlerSpells(controlDisplaySpell);
+  searchView.addHandlerDisplaySpell(controlDisplaySpell);
   searchView.showSearchResultsOnClick(controlShowSearchOnClick);
   searchView.hideSearchResults(controlHideSearchResults);
 
@@ -72,9 +71,10 @@ function showSuggestions(results, inputVal) {
 async function controlDisplaySpell(e) {
   try {
     // 1) Geta spell iz niza na osnovu pretraznog pojma
+    const listElement = e.target.closest("li"); // Click na <strong> je pravio error
     const spells = model.state.spellList;
     const [selectedSpell] = spells.filter(
-      spell => spell.name === e.target.textContent
+      spell => spell.name === listElement.textContent
     );
 
     // 2) API poziv na specifican spell na osnovu getanog spella

@@ -2,7 +2,7 @@ import searchView from "./searchView.js";
 
 class SpellView {
   displaySpell(spell) {
-    console.log(spell);
+    // console.log(spell);
     // 1) Displaya getani spell
     searchView.suggestions.innerHTML = "";
     let spellLevelMarkup = "";

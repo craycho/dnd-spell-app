@@ -10,7 +10,7 @@ class SearchView {
     this._parentEl.addEventListener("keyup", handler);
   }
 
-  addHandlerSpells(handler) {
+  addHandlerDisplaySpell(handler) {
     this.suggestions.addEventListener("click", handler);
   }
 
