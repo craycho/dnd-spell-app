@@ -214,6 +214,9 @@ ul li:hover {
 }
 
 .btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 
   border: none;
@@ -290,10 +293,6 @@ active {
 .btn-level {
   height: 5.9rem;
   width: 5.9rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   @media only screen and (max-width: $bp-small) {
     height: 5rem;
