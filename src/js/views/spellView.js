@@ -30,7 +30,9 @@ class SpellView {
 
     // 2) Scrolla window do vrha pagea
     window.scrollTo({
-      top: 0,
+      top:
+        document.querySelector(".container").getBoundingClientRect().top +
+        window.scrollY,
       left: 0,
       behavior: "smooth",
     });

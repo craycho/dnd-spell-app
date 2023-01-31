@@ -77,7 +77,7 @@ class FilterView {
     pagination.classList.remove("visible");
     this.filteredResults.classList.remove("has-pagination");
 
-    if (filteredSpells.length >= 12) {
+    if (filteredSpells.length >= 20) {
       this.generatePagination(filteredSpells);
     } else {
       for (const spell of filteredSpells) {

@@ -155,12 +155,3 @@ function controlDisplayPagination(clickedPage) {
     }
   }
 }
-
-/* CONTROL SEARCH SA LISTOM 
-// function showFilters(results) {
-//   schoolView.filteredResults.innerHTML = "";
-
-//   for (let i = 0; i < results.length; i++) {
-//     schoolView.filteredResults.innerHTML += `<li>${results[i]}</li>`;
-//   }
-// } */
